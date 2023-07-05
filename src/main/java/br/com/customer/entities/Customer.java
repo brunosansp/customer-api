@@ -31,4 +31,7 @@ public class Customer {
     @NotBlank
     private String phone;
 
+    @Embedded
+    private Address address;
+
 }
