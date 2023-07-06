@@ -2,6 +2,7 @@ package br.com.customer.resources;
 
 import br.com.customer.entities.Customer;
 import br.com.customer.repositories.ICustomerRepository;
+import br.com.customer.service.impl.ICustomerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,20 +11,20 @@ import java.util.List;
 @RequestMapping("/customer")
 public class CustomerResource {
 
-    private final ICustomerRepository iCustomerRepository;
+    private final ICustomerService iCustomerService;
 
-    public CustomerResource(ICustomerRepository iCustomerRepository) {
-        this.iCustomerRepository = iCustomerRepository;
+    public CustomerResource(ICustomerService iCustomerService) {
+        this.iCustomerService = iCustomerService;
     }
 
     @GetMapping
     public List<Customer> list() {
-        return iCustomerRepository.findAll();
+        return iCustomerService.findAll();
     }
 
     @GetMapping("/find")
     public Customer findByCpf(@RequestParam("cpf") String cpf) {
-        return iCustomerRepository.findByCpf(cpf);
+        return iCustomerService.findByCpf(cpf);
     }
 
 }
