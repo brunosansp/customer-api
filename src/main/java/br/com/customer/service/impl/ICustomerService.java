@@ -1,12 +1,13 @@
 package br.com.customer.service.impl;
 
+import br.com.customer.dtos.CustomerResponse;
 import br.com.customer.entities.Customer;
 
 import java.util.List;
 
 public interface ICustomerService {
 
-    List<Customer> findAll();
+    List<CustomerResponse> findAll();
 
-    Customer findByCpf(String cpf);
+    CustomerResponse findByCpf(String cpf);
 }

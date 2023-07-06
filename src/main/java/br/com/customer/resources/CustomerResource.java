@@ -1,7 +1,6 @@
 package br.com.customer.resources;
 
-import br.com.customer.entities.Customer;
-import br.com.customer.repositories.ICustomerRepository;
+import br.com.customer.dtos.CustomerResponse;
 import br.com.customer.service.impl.ICustomerService;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +17,12 @@ public class CustomerResource {
     }
 
     @GetMapping
-    public List<Customer> list() {
+    public List<CustomerResponse> list() {
         return iCustomerService.findAll();
     }
 
     @GetMapping("/find")
-    public Customer findByCpf(@RequestParam("cpf") String cpf) {
+    public CustomerResponse findByCpf(@RequestParam("cpf") String cpf) {
         return iCustomerService.findByCpf(cpf);
     }
 
