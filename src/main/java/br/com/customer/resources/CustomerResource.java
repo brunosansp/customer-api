@@ -2,9 +2,7 @@ package br.com.customer.resources;
 
 import br.com.customer.entities.Customer;
 import br.com.customer.repositories.ICustomerRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,4 +20,10 @@ public class CustomerResource {
     public List<Customer> list() {
         return iCustomerRepository.findAll();
     }
+
+    @GetMapping("/find")
+    public Customer findByCpf(@RequestParam("cpf") String cpf) {
+        return iCustomerRepository.findByCpf(cpf);
+    }
+
 }
