@@ -1,13 +1,11 @@
 package br.com.customer.entities;
 
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
+@Getter @Setter
 @Embeddable
 public class Address {
 
@@ -18,4 +16,14 @@ public class Address {
     private String bairro;
     private String localidade;
     private String uf;
+  
+  public Address(Address address) {
+    this.cep = address.getCep();
+    this.logradouro = address.getLogradouro();
+    this.numero = address.getNumero();
+    this.complemento = address.getComplemento();
+    this.bairro = address.getBairro();
+    this.localidade = address.getLocalidade();
+    this.uf = address.getUf();
+  }
 }

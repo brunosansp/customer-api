@@ -1,5 +1,6 @@
 package br.com.customer.service.impl;
 
+import br.com.customer.dtos.CustomerRequest;
 import br.com.customer.dtos.CustomerResponse;
 import br.com.customer.entities.Customer;
 
@@ -10,4 +11,6 @@ public interface ICustomerService {
     List<CustomerResponse> findAll();
 
     CustomerResponse findByCpf(String cpf);
+    
+    void save(Customer customer);
 }

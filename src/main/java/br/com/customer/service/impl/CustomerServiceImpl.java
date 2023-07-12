@@ -29,4 +29,9 @@ public class CustomerServiceImpl implements ICustomerService {
     public CustomerResponse findByCpf(String cpf) {
         return new CustomerResponse(iCustomerRepository.findByCpf(cpf).orElseThrow(NotFoundCustomerException::new));
     }
+    
+    @Override
+    public void save(Customer customer) {
+        iCustomerRepository.save(customer);
+    }
 }

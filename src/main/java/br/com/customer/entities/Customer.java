@@ -1,5 +1,6 @@
 package br.com.customer.entities;
 
+import br.com.customer.dtos.CustomerRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
+
+import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +21,8 @@ public class Customer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    private String uuid;
 
     @CPF @NotBlank
     private String cpf;
@@ -33,5 +38,13 @@ public class Customer {
 
     @Embedded
     private Address address;
-
+    
+    public Customer(CustomerRequest request) {
+        this.uuid = UUID.randomUUID().toString();
+        this.cpf = request.getCpf();
+        this.name = request.getName();
+        this.email = request.getEmail();
+        this.phone = request.getPhone();
+        this.address = new Address(request.getAddress());
+    }
 }
